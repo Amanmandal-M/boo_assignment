@@ -1,48 +1,10 @@
 const colors = require("colors");
 const { profileModel } = require("../models/profileModel");
-
-exports.profileControllerGetAllProfiles = async (req, res) => {
-  try {
-    const profiles = await profileModel.find();
-
-    if (profiles.length === 0) {
-      const Sample_Profiles = [
-        {
-          name: "John Doe",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          mbti: "INTJ",
-          enneagram: "5w6",
-          variant: "sx/sp",
-          tritype: 514,
-          socionics: "INTp",
-          sloan: "RLUEI",
-          psyche: "CTVIP",
-          image: "https://example.com/profile_image.jpg",
-        },
-      ];
-      return res.status(200).render("profile_template", {
-        profile: Sample_Profiles[0],
-      });
-    }
-
-    res.status(200).render("profile_template", {
-      profile: profiles[0],
-    });
-  } catch (error) {
-    console.error(colors.red(`Error in fetching profiles: ${error.message}`));
-    res.status(500).json({
-      status: false,
-      statusCode: 500,
-      message: "Error in fetching profiles",
-      error: error.message,
-    });
-  }
-};
+const { errorResponse } = require("../helpers/successAndError");
 
 exports.profileControllerGetById = async (req, res) => {
   try {
-    const profile = await profileModel.findOne({ id: Number(req.params.id) });
+    const profile = await profileModel.findOne({ id: req.params.id });
 
     if (!profile) {
       return res.status(404).send("Profile not found");
@@ -53,27 +15,25 @@ exports.profileControllerGetById = async (req, res) => {
     });
   } catch (error) {
     console.error(colors.red(`Error in viewing profile: ${error.message}`));
-    res.status(500).json({
-      status: false,
-      statusCode: 500,
-      message: "Error in viewing Profile",
-      error: error.message,
-    });
+    res
+      .status(500)
+      .json(errorResponse(500, "Internal Server Error", error.message));
   }
 };
 
 exports.profileControllerCreateProfile = async (req, res) => {
+  const newProfile = req.body;
   try {
-    const newProfile = req.body;
     const result = await profileModel.create(newProfile);
-    res.json(result);
+    res.status(200).json({
+      status: true,
+      statusCode: 200,
+      data: result,
+    });
   } catch (error) {
     console.error(colors.red(`Error in posting profile: ${error.message}`));
-    res.status(500).json({
-      status: false,
-      statusCode: 500,
-      message: "Error in Creating Profile",
-      error: error.message,
-    });
+    res
+      .status(500)
+      .json(errorResponse(500, "Internal Server Error", error.message));
   }
 };

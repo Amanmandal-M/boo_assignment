@@ -13,6 +13,8 @@ const { connectToDatabase, closeDatabase } = require('./configs/db');
 
 // Importing profile routes
 const { profileRouter } = require('./routes/profile');
+const { commentRouter } = require('./routes/comment');
+
 
 // Importing homepage controller
 const { staticPageController } = require('./controllers/HomePageController');
@@ -24,8 +26,9 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 
 // Define routes
-app.get('/*', staticPageController);
+app.get('/', staticPageController);
 app.use('/profile', profileRouter);
+app.use('/comment', commentRouter);
 
 // Start server and connect to database
 (async () => {

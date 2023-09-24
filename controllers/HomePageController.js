@@ -1,5 +1,6 @@
 const colors = require("colors");
 const { profileModel } = require("../models/profileModel");
+const { errorResponse } = require("../helpers/successAndError");
 
 exports.staticPageController = async (req, res) => {
   try {
@@ -31,11 +32,8 @@ exports.staticPageController = async (req, res) => {
     });
   } catch (error) {
     console.error(colors.red(`Error in fetching profiles: ${error.message}`));
-    res.status(500).json({
-      status: false,
-      statusCode: 500,
-      message: "Error in fetching profiles",
-      error: error.message,
-    });
+    res
+      .status(500)
+      .json(errorResponse(500, "Internal Server Error", error.message));
   }
 };
