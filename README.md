@@ -1,14 +1,8 @@
 <h1 align="center">Welcome to Boo World Backend</h1>
 
-<br>
-
 ## About
 
-<br>
-
 Boo Backend is a versatile application designed to facilitate the creation of user accounts, comments, and the ability to like or dislike comments with ease and efficiency. This robust platform provides a seamless user experience for managing interactions within the system.
-
-<br>
 
 ## Features
 
@@ -16,8 +10,6 @@ Boo Backend is a versatile application designed to facilitate the creation of us
 - You can do comments and likes, unlikes
 - Relationships Comments with profileID.
 - Error Handling.
-
-<br>
 
 ## Technologies Used
 
@@ -27,13 +19,9 @@ Boo Backend is a versatile application designed to facilitate the creation of us
 
 ## Clone Repository
 
-<br>
-
 ```
 git clone https://github.com/Amanmandal-M/boo_world.git
 ```
-
-<br>
 
 ### Prerequisites
 
@@ -41,22 +29,14 @@ git clone https://github.com/Amanmandal-M/boo_world.git
 - NodeJS
 - MongoDB
 
-<br>
-
 ## Installation
-
-<br>
 
 ```
 cd boo_world
 npm run start
 ```
 
-<br>
-
 ## Start the Backend server
-
-<br>
 
 ```
 npm run start
@@ -65,8 +45,6 @@ npm run server
 or
 node app.js
 ```
-
-<br>
 
 ##  MVC Structure
 
@@ -113,7 +91,6 @@ Note :
 - `MONGO_URL` is for running database and store your data in database so put your mongo link.
 - `NODE_ENV` is for accessing database for test and it is like a authentication but not full authentication .
 
-<br>
 
 ## Endpoints
 
@@ -180,11 +157,6 @@ Note :
     </tbody>
 </table>
 
-
-<br>
-
-<br>
-
 ## Schema
 
 ### Profile Schema
@@ -233,8 +205,6 @@ Note :
   },
 }
 ```
-
-<br>
 
 ### Comment Schema
 
