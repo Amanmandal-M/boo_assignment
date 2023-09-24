@@ -3,7 +3,6 @@ const profileRouter = express.Router();
 
 // Porfile Controller Locations
 const {
-  profileControllerGetAllProfiles,
   profileControllerGetById,
   profileControllerCreateProfile,
 } = require("../controllers/profile");

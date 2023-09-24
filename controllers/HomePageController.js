@@ -1,9 +1,9 @@
 const colors = require("colors");
-const { userModel } = require("../models/userModel");
+const { profileModel } = require("../models/profileModel");
 
 exports.staticPageController = async (req, res) => {
   try {
-    const profiles = await userModel.find();
+    const profiles = await profileModel.find();
 
     if (profiles.length === 0) {
       const Sample_Profiles = [

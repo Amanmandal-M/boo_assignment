@@ -1,9 +1,9 @@
 const colors = require("colors");
-const { userModel } = require("../models/userModel");
+const { profileModel } = require("../models/profileModel");
 
 exports.profileControllerGetAllProfiles = async (req, res) => {
   try {
-    const profiles = await userModel.find();
+    const profiles = await profileModel.find();
 
     if (profiles.length === 0) {
       const Sample_Profiles = [
@@ -42,7 +42,7 @@ exports.profileControllerGetAllProfiles = async (req, res) => {
 
 exports.profileControllerGetById = async (req, res) => {
   try {
-    const profile = await userModel.findOne({ id: Number(req.params.id) });
+    const profile = await profileModel.findOne({ id: Number(req.params.id) });
 
     if (!profile) {
       return res.status(404).send("Profile not found");
@@ -65,7 +65,7 @@ exports.profileControllerGetById = async (req, res) => {
 exports.profileControllerCreateProfile = async (req, res) => {
   try {
     const newProfile = req.body;
-    const result = await userModel.create(newProfile);
+    const result = await profileModel.create(newProfile);
     res.json(result);
   } catch (error) {
     console.error(colors.red(`Error in posting profile: ${error.message}`));
