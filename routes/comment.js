@@ -13,8 +13,8 @@ const {
 // Get All comments
 commentRouter.get("/", commentControllerGetAllComments);
 
-// Get comment Details by Id
-commentRouter.get("/:id", commentControllerGetByProfileId);
+// Get comment Details by ProfileId
+commentRouter.get("/:profileId", commentControllerGetByProfileId);
 
 // Create a new comment
 commentRouter.post("/", commentControllerCreateComments);
